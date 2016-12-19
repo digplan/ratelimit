@@ -1,4 +1,4 @@
-function ratelimit(options){
+function ratelimits(options){
   var db = {};
   var threshms = options.minutes*60*1000;
   var threshnum = options.threshold;
@@ -8,7 +8,7 @@ function ratelimit(options){
           db[k] = {expire: (+new Date() + threshms), count: 1};
         else
           db[k].count++;
-        return db[k].count < threshnum;
+        return db[k].count <= threshnum;
   };
   setInterval(()=>{
      var time = +new Date();
@@ -23,4 +23,4 @@ function ratelimit(options){
 }
 
 if(typeof module !== 'undefined')
-  module.exports = ratelimit;
+  module.exports = ratelimits;
