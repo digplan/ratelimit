@@ -11,6 +11,4 @@ ipaddress.db;  // shows the database
 ````
 
 Clicking buttons in a browser
-````
-
-````
+<script async src="//jsfiddle.net/digplan/ztmc4y3v/embed/js,html,result/"></script>
