@@ -1,0 +1,14 @@
+{
+  "name"          : "ratelimits",
+  "description"   : "",
+  "url"           : "http://github.com/digplan/ratelimits/",
+  "keywords"      : ["util", "nodejs", "express", "web", "array"],
+  "author"        : "C Borkert <>",
+  "main": "ratelimits.js",
+  "repository": {
+  	"type": "git",
+ 	  "url": "git://github.com/digplan/ratelimits"
+  },
+  "runkitExampleFilename" : "test.js",
+  "version"       : "1.0.0"
+}
