@@ -1,5 +1,6 @@
 # ratelimit
-Let's you set rates on any action occuring (variable).
+Let's you set rates on any action occuring (variable).  
+You can set time-bounded limits for instance IP addresses on a server (to deny access), or user actions like clicking a button in a browser.
 
 IP addresses on a server
 ````
