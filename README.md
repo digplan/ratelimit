@@ -1,5 +1,9 @@
 # ratelimit
-Set rates on any action occuring. Use a string as the id of the thing to be limited.  
+Set rates on any action occuring. Use a string as the id of the thing to be limited. 
+
+###.check(id)
+###.onlimited(id, count)
+###.onreset(id)
 
 You can set time-bounded limits for instance IP addresses on a server (to deny access):
 ````
