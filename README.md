@@ -1,4 +1,4 @@
-# ratelimit
+# ratelimits
 Set rates on any action occuring.
 ````
 var ipaddress = ratelimits({threshold: 5, minutes: 1})
