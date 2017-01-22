@@ -1,7 +1,9 @@
 # ratelimit
 Set rates on any action occuring. Use a string as the id of the thing to be limited. 
 
-### var ipaddress = ratelimits({threshold: 5, minutes: 1})
+````
+var ipaddress = ratelimits({threshold: 5, minutes: 1})
+````
 ###.check(id)
 Check an id and increment its count
 ###.onlimited(id, count)
