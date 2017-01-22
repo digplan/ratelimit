@@ -1,9 +1,13 @@
 # ratelimit
 Set rates on any action occuring. Use a string as the id of the thing to be limited. 
 
+### var ipaddress = ratelimits({threshold: 5, minutes: 1})
 ###.check(id)
+Check an id and increment its count
 ###.onlimited(id, count)
+Fires when threshold has been reached
 ###.onreset(id)
+Fires when threshold is reset by the timer
 
 You can set time-bounded limits for instance IP addresses on a server (to deny access):
 ````
