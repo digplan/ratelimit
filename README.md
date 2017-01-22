@@ -1,5 +1,5 @@
 # ratelimit
-Let's you set rates on any action occuring. Use a string to id the thing to be limited.  
+Set rates on any action occuring. Use a string as the id of the thing to be limited.  
 
 You can set time-bounded limits for instance IP addresses on a server (to deny access):
 ````
