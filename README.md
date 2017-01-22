@@ -1,29 +1,33 @@
 # ratelimit
-Let's you set rates on any action occuring (variable).  
-You can set time-bounded limits for instance IP addresses on a server (to deny access), or user actions like clicking a button in a browser.
+Let's you set rates on any action occuring. Use a string to id the thing to be limited.  
 
-IP addresses on a server
+You can set time-bounded limits for instance IP addresses on a server (to deny access):
 ````
-var ipaddress = ratelimits({threshold: 5, minutes: 1});
+// set a threshold and number of minutes to reset
+var ipaddress = ratelimits({threshold: 5, minutes: 1})
+
 app.get('/', function(req, res){
-  var okToEnter = ipaddress.check(req.ip);  // true|false
-});
-ipaddress.db;  // shows the database
+  var okToEnter = ipaddress.check(req.ip)  // true|false
+  if(!okToEnter) res.sendStatus(429)  // Too many requests
+})
+
+ipaddress.db  // shows info, ie.. { '1.1.1.1': { expire: 1485105971142, count: 5 } }
 ````
 
-Clicking buttons in a browser
+or user actions like clicking a button in a browser:
 https://jsfiddle.net/digplan/ztmc4y3v/
 ````
-var clicker = ratelimits({threshold: 5, minutes: 1/10});
+<button id=mybutton onclick='this.disabled = this.innerText = !window.clicker.check(this.id)'>
+Click me 6 times!</button>
 
-clicker.onalert = function(msg, id){
-  messages.innerText = [msg, id, 'at', new Date()].join(' ');
-  document.querySelector('#'+id).disabled = false;
+var clicker = ratelimits({threshold: 5, minutes: 1/10})
+
+// when limited
+clicker.onlimited = (id, count) => {
+  console.log(`${id} has count ${count} and has been limited`)
 }
-window.check = function(e){
-  e.disabled = !clicker.check(e.id);
-}
-window.showdb = function(){
-  db.innerText = JSON.stringify(clicker.db);
+// when reset
+clicker.onreset = id => {
+  console.log(`${id} has been reset`)
 }
 ````

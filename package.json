@@ -11,5 +11,5 @@
   },
   "scripts": {"test": "node test.js"},
   "runkitExampleFilename" : "test.js",
-  "version"       : "1.0.2"
+  "version"       : "1.0.3"
 }

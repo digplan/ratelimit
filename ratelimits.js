@@ -8,14 +8,16 @@ function ratelimits(options){
           db[k] = {expire: (+new Date() + threshms), count: 1};
         else
           db[k].count++;
-        return db[k].count <= threshnum;
+        var ok = db[k].count <= threshnum;
+        if(!ok) ret.onlimited(k, db[k].count);
+        return ok
   };
   setInterval(()=>{
      var time = +new Date();
      for(k in db){
        if(db[k].expire > time) return;
        delete db[k];
-       if(ret.onalert) ret.onalert('Reset', k);
+       if(ret.onreset) ret.onreset(k);
      }
   }, threshms);
   ret.db = db;
