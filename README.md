@@ -1,27 +1,33 @@
 # ratelimits
 Set rates on any action occuring.
-````
+
+```` javascript
 var ipaddress = ratelimits({threshold: 5, minutes: 1})
 ````
-###.check(id)
+
+#### .check(id)
 Check an id and increment its count
-###.onlimited(id, count)
+
+#### .onlimited(id, count)
 Fires when threshold has been reached
-###.onreset(id)
+
+#### .onreset(id)
 Fires when threshold is reset by the timer
 
-You can set time-bounded limits for instance IP addresses on a server (to deny access):
-````
+## Example
+
+You can set time-bounded limits, for example: IP addresses on a server (denying access):
+```` javascript
 // set a threshold and number of minutes to reset
 var ipaddress = ratelimits({threshold: 5, minutes: 1})
 
-app.get('/', function(req, res){
+app.get('/', function(req, res) {
   var okToEnter = ipaddress.check(req.ip)  // true|false
   if(!okToEnter) res.sendStatus(429)  // Too many requests
 })
 
-ipaddress.db  // shows info, ie.. { '1.1.1.1': { expire: 1485105971142, count: 5 } }
+ipaddress.db // returns { '1.1.1.1': { expire: 1485105971142, count: 5 } }
 ````
 
-or user actions like clicking a button in a browser:
+Or user actions like clicking a button in a browser:
 https://jsfiddle.net/digplan/ztmc4y3v/
